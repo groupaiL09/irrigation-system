@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/plugin/M2MqttUnity/Examples/Scenes/M2MqttUnity_Test.unity
+    guid: fad30ee856646504c9bfaacfe2247591
+  - enabled: 1
+    path: Assets/Scenes/Login.unity
+    guid: 196f638b149841b45b5950969c3a32a1
+  - enabled: 1
+    path: Assets/Scenes/Register.unity
+    guid: 5f50db8e6d468e94db5d9685b2d0ea29
+  - enabled: 1
+    path: Assets/Scenes/Farmlist.unity
+    guid: 0859fc25910071a4287dbdafa869d0e8
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Device.unity
+    guid: 41b4b38ed495bc84da84357b0c908b25
+  - enabled: 1
+    path: Assets/Scenes/Watering_mode.unity
+    guid: 47bccc76bf712e54d9760758a3b74c52
+  - enabled: 1
+    path: Assets/Scenes/Notification.unity
+    guid: 1b69cbfddc71276468278a34ef332091
+  - enabled: 1
+    path: Assets/Scenes/Statistic.unity
+    guid: bc17edd1950ffb64d827b698efea7160
+  - enabled: 1
+    path: Assets/Scenes/Farm_information.unity
+    guid: 7010c583581176141accf59f73ccd14a
+  m_configObjects: {}
