@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('localhost', 'root', '', 'unity_app'); 
+    $con = mysqli_connect('localhost', 'root', '', 'da_ai'); 
 
     $emailMaxLength = 100;
 

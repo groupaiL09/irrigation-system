@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('localhost', 'root', '', 'unity_app'); 
+    $con = mysqli_connect('localhost', 'root', '', 'da_ai'); 
 
     //check connection to DB
     if (mysqli_connect_errno()){
