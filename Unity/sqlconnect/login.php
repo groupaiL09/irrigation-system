@@ -3,7 +3,7 @@
 
     //check connection to DB
     if (mysqli_connect_errno()){
-        echo "1";//error code #1 = connection failed
+        echo "connection failed";//error code #1 = connection failed
         exit();
     }    
 
@@ -11,7 +11,7 @@
     $password = $_POST["password"];
     
     //check if username exists
-    $namecheckquery = "SELECT username, salt, hash FROM users WHERE username = '" . $username . "';";
+    $namecheckquery = "SELECT user_id, username, salt, hash FROM users WHERE username = '" . $username . "';";
 
     $namecheck = mysqli_query($con, $namecheckquery) or die("Name check query failed"); // error code: name check query failed
 
@@ -25,14 +25,15 @@
         $existinginfo = mysqli_fetch_assoc($namecheck);
         $salt = $existinginfo["salt"];
         $hash = $existinginfo["hash"];
+        $user_id = $existinginfo["user_id"]; 
         
         $loginhash = crypt($password, $salt);
         if ($hash != $loginhash){
             echo "Incorrect password"; //error code: password does not hash to match table
             exit();
         }
-    }
 
-    echo("0");
+        echo $user_id;
+    }
 
 ?>

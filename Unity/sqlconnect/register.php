@@ -7,7 +7,7 @@
 
     //check connection to DB
     if (mysqli_connect_errno()){
-        echo "connection failed";//error code: connection failed
+        echo "connection failed";   //error code: connection failed
         exit();
     }    
 
