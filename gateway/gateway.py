@@ -5,7 +5,7 @@ from Adafruit_IO import MQTTClient
 
 ADA_FEED_ID = ["farm1.moisture", "farm1.temperature", "farm1.pump-status"]
 AIO_USERNAME = "groupaiL09"
-AIO_KEY = "aio_vPIj09Q2cV2yVj8uoqnby2UBKCcG"
+AIO_KEY = "aio_ZToV229NvXpLfP8uk198o2kONuH1"
 
 
 def connected(client):
@@ -98,5 +98,3 @@ def readSerial():
 while True:
     readSerial()
     time.sleep(5)
-
-

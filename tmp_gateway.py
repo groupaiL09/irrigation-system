@@ -5,7 +5,7 @@ from  Adafruit_IO import  MQTTClient
 
 AIO_FEED_ID = "temperature"
 AIO_USERNAME = "groupaiL09"
-AIO_KEY = "aio_njzm76fKeROefSeNRAUMsW4ilPix"
+AIO_KEY = "aio_ZToV229NvXpLfP8uk198o2kONuH1"
 
 def  connected(client):
     print("Ket noi thanh cong...")

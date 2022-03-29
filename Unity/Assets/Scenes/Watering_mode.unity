@@ -473,6 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggleGroup: {fileID: 464842454}
+  isOnRadio: {fileID: 1622794254}
+  isOffRadio: {fileID: 2054587554}
 --- !u!1 &366972446
 GameObject:
   m_ObjectHideFlags: 0

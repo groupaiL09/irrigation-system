@@ -18,6 +18,7 @@ namespace HomePage
         public List<string> topics = new List<string>();
         private List<string> eventMessages = new List<string>();
         public string farm_id = "1";
+        public static string preLoading = "Homepage";
         public static int modAuto = 0;
 
         public void SetEncrypted(bool isEncrypted)
@@ -25,9 +26,20 @@ namespace HomePage
             this.isEncrypted = isEncrypted;
         }
 
+        public int getValueOfAutoMod()
+        {
+            return modAuto;
+        }
+
         public void UpdateModeAuto(string msg)
         {
             modAuto = Int32.Parse(msg);
+        }
+
+        public void InitSceneData()
+        {
+            client.Publish(topics[4], System.Text.Encoding.UTF8.GetBytes("1"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            Debug.Log("Initialize data!");
         }
 
         public void PublishPumpOn()
@@ -42,9 +54,9 @@ namespace HomePage
             Debug.Log("Turn Pump OFF!");
         }
 
-        public void PublishModeAuto(string modAuto)
+        public void PublishModeAuto(string modAutoNow)
         {
-            client.Publish(topics[3], System.Text.Encoding.UTF8.GetBytes(modAuto), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            client.Publish(topics[3], System.Text.Encoding.UTF8.GetBytes(modAutoNow), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
             Debug.Log("Update Mode Auto!");
         }
 
@@ -58,6 +70,7 @@ namespace HomePage
         {
             base.OnConnected();
             SubscribeTopics();
+            InitSceneData();
         }
 
         protected override void SubscribeTopics()
@@ -137,11 +150,30 @@ namespace HomePage
             topics.Add("groupaiL09/f/farm" + farm_id + ".moisture");
             topics.Add("groupaiL09/f/farm" + farm_id + ".pump-status");
             topics.Add("groupaiL09/f/farm" + farm_id + ".mode-auto");
+
+            topics.Add("groupaiL09/f/farm" + farm_id + ".mobile");
+
             base.brokerAddress = "io.adafruit.com";
             base.mqttUserName = "groupaiL09";
-            base.mqttPassword = "aio_njzm76fKeROefSeNRAUMsW4ilPix";
+            base.mqttPassword = "aio_ZToV229NvXpLfP8uk198o2kONuH1";
             base.Connect();
         }
+        
+        
+        public void Update()
+        {
+            base.ProcessMqttEvents();
+         
+            Scene currentScene = SceneManager.GetActiveScene();
+            string sceneName = currentScene.name;
+            if (sceneName != preLoading)
+            {
+                InitSceneData();
+                preLoading = sceneName;
+            }
+            
+        }
+        
     }
 }
 

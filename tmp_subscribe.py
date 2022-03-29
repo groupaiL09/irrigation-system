@@ -1,9 +1,9 @@
 import sys
 from Adafruit_IO import MQTTClient
 
-AIO_FEED_ID = "farm1.temperature"
+AIO_FEED_ID = "mobile"
 AIO_USERNAME = "groupaiL09"
-AIO_KEY = "aio_njzm76fKeROefSeNRAUMsW4ilPix"
+AIO_KEY = "aio_ZToV229NvXpLfP8uk198o2kONuH1"
 
 def connected(client):
     print('Subscribing to Feed {0}'.format(AIO_FEED_ID))
