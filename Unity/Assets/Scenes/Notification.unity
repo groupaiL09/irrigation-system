@@ -158,7 +158,7 @@ RectTransform:
   - {fileID: 213257580}
   - {fileID: 299382966}
   m_Father: {fileID: 1212741566}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -206,7 +206,7 @@ RectTransform:
   m_Children:
   - {fileID: 391773207}
   m_Father: {fileID: 1212741566}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -295,7 +295,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 213257582}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212741571}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoStatistic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &213257582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +582,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 316249435}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1212741571}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoNotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &316249435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,6 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae8804b63886242b46bedafaaba2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingScene: {fileID: 59522057}
+  setting: {fileID: 59522055}
 --- !u!4 &627517499
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,7 +1040,7 @@ RectTransform:
   m_Children:
   - {fileID: 266855615}
   m_Father: {fileID: 1212741566}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1351,7 +1377,7 @@ RectTransform:
   m_Children:
   - {fileID: 2034232024}
   m_Father: {fileID: 1212741566}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1719,6 +1745,7 @@ GameObject:
   - component: {fileID: 1212741568}
   - component: {fileID: 1212741567}
   - component: {fileID: 1212741570}
+  - component: {fileID: 1212741571}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1742,11 +1769,11 @@ RectTransform:
   - {fileID: 811990370}
   - {fileID: 1072256305}
   - {fileID: 1392067779}
-  - {fileID: 59522056}
   - {fileID: 930117098}
   - {fileID: 685525114}
   - {fileID: 102993121}
   - {fileID: 1528501984}
+  - {fileID: 59522056}
   m_Father: {fileID: 880199938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1829,9 +1856,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dateField: {fileID: 391773208}
-  canvasRef: {fileID: 1212741565}
+  canvasRef: {fileID: 1392067778}
   prefabNotif: {fileID: 1352316753171409489, guid: c6caf50847546d164b9790fc614e0859, type: 3}
   submitButton: {fileID: 1528501985}
+--- !u!114 &1212741571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212741565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a7000a224484b6db2679ab90b400db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1369946573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2099,7 +2138,7 @@ RectTransform:
   m_Children:
   - {fileID: 2107532219}
   m_Father: {fileID: 1212741566}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

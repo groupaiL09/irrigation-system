@@ -329,7 +329,7 @@ RectTransform:
   - {fileID: 1488790456}
   - {fileID: 2137213458}
   m_Father: {fileID: 1794903055}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -484,7 +484,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 85690538}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1794903060}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoNotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &85690538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,8 +920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ae8804b63886242b46bedafaaba2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingScene: {fileID: 0}
-  setting: {fileID: 0}
+  settingScene: {fileID: 68529516}
+  setting: {fileID: 68529515}
 --- !u!4 &355277495
 Transform:
   m_ObjectHideFlags: 0
@@ -1601,7 +1613,7 @@ RectTransform:
   m_Children:
   - {fileID: 514699802}
   m_Father: {fileID: 1794903055}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2570,7 +2582,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1488790458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1794903060}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoStatistic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1488790458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3058,6 +3082,7 @@ GameObject:
   - component: {fileID: 1794903057}
   - component: {fileID: 1794903056}
   - component: {fileID: 1794903059}
+  - component: {fileID: 1794903060}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3080,12 +3105,12 @@ RectTransform:
   - {fileID: 2136617329}
   - {fileID: 138358629}
   - {fileID: 1561055622}
+  - {fileID: 2091188617}
   - {fileID: 1811436755}
-  - {fileID: 68529517}
   - {fileID: 957822795}
   - {fileID: 1708352030}
-  - {fileID: 2091188617}
   - {fileID: 822692398}
+  - {fileID: 68529517}
   m_Father: {fileID: 66740407}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3171,6 +3196,18 @@ MonoBehaviour:
   canvasRef: {fileID: 1561055621}
   prefabStat: {fileID: 7582314094712198880, guid: 0eec98ca6106c0de38d94641322729c4, type: 3}
   submitButton: {fileID: 822692399}
+--- !u!114 &1794903060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794903054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a7000a224484b6db2679ab90b400db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1811436754
 GameObject:
   m_ObjectHideFlags: 0
@@ -3202,7 +3239,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1794903055}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3411,7 +3448,7 @@ RectTransform:
   m_Children:
   - {fileID: 483438671}
   m_Father: {fileID: 1794903055}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
