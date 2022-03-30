@@ -21,8 +21,8 @@ public class Manager : MonoBehaviour
         }
     }
 
-    //void Start()
-    //{
-        //setting.SetActive(false);
-    //}
+    void Start()
+    {
+        setting.SetActive(false);
+    }
 }
