@@ -286,7 +286,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 442123827}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Device_Manager, Assembly-CSharp
         m_MethodName: showEditPanel
         m_Mode: 1
         m_Arguments:
@@ -485,7 +485,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 442123827}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Device_Manager, Assembly-CSharp
         m_MethodName: showEditPanel
         m_Mode: 1
         m_Arguments:
@@ -671,7 +671,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 442123827}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Device_Manager, Assembly-CSharp
         m_MethodName: toggleState
         m_Mode: 1
         m_Arguments:
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 442123828}
   - component: {fileID: 442123827}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Device_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1245,11 +1245,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 442123826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ae8804b63886242b46bedafaaba2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: e40eb54f788021e0abbdf1c18a116055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingScene: {fileID: 163932350}
+  editDeviceInfo: {fileID: 740824146}
   setting: {fileID: 163932348}
+  edit: {fileID: 740824144}
 --- !u!4 &442123828
 Transform:
   m_ObjectHideFlags: 0
@@ -1385,7 +1387,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 442123827}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Device_Manager, Assembly-CSharp
         m_MethodName: closeEditPanel
         m_Mode: 1
         m_Arguments:
@@ -3199,7 +3201,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 442123827}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: Device_Manager, Assembly-CSharp
         m_MethodName: showEditPanel
         m_Mode: 1
         m_Arguments:

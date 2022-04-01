@@ -62,7 +62,9 @@ public class statistic : MonoBehaviour
             goStat[i].GetComponent<RectTransform>().offsetMin = new Vector2 (2,600);
             goStat[i].GetComponent<RectTransform>().offsetMax = new Vector2 (0,-100 * (i + 1));
         }
+        // Debug.Log(farm_id);
     }
+    
     IEnumerator getStat()
     {
         // farm_id = 1;

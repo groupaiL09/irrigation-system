@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 using SimpleJSON;
-// using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 
 public class farmlist : MonoBehaviour
 {
@@ -35,9 +35,8 @@ public class farmlist : MonoBehaviour
             {
                 StartCoroutine(CreateFarmsRoutine(jsonArrayString));
             };*/
+
         }
-        // DBManager.cur = 2;
-        // Debug.Log("Scene " + DBManager.cur);
     }
 
     public void GotoFarm()
@@ -85,13 +84,12 @@ public class farmlist : MonoBehaviour
             //btn.onClick.AddListener(delegate { GotoFarm(); });
             //virtualButton.onClick.AddListener(GotoFarm);
 
-            if (i == 0)
+            /*if (i == 0)
             {
-                
                 farm.transform.localPosition = new Vector2(419f, 89f);
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-                
+
             }
             if (i == 1)
             {
@@ -103,7 +101,7 @@ public class farmlist : MonoBehaviour
             }
             if (i == 2)
             {
-                
+      
                 farm.transform.localPosition = new Vector2(419f, -549f);
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
@@ -116,9 +114,43 @@ public class farmlist : MonoBehaviour
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
                     
+            }*/
+
+            if (i == 0)
+            {
+                farm.transform.localPosition = new Vector2(542f, -820.46f);
+                //farm.transform.localScale = Vector2;
+                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
+
+            }
+            if (i == 1)
+            {
+
+                farm.transform.localPosition = new Vector2(542f, -1057f);
+                //farm.transform.localScale = Vector2;
+                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
+
+            }
+            if (i == 2)
+            {
+
+                farm.transform.localPosition = new Vector2(542f, 633f);
+                //farm.transform.localScale = Vector2;
+                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
+
+            }
+            if (i == 3)
+            {
+
+                farm.transform.localPosition = new Vector2(542f, 399f);
+                //farm.transform.localScale = Vector2;
+                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
+
             }
 
-            
+            DBManager.clones.Add(farm);
+
+
         }
     }
 
@@ -126,12 +158,17 @@ public class farmlist : MonoBehaviour
 
     public void create()
     {
-        JSONArray jsonArray = JSON.Parse(jsonArrayString) as JSONArray;
-        noOfFarms = jsonArray.Count;
+        if (noOfFarms > 0)
+        {
+            JSONArray jsonArray = JSON.Parse(jsonArrayString) as JSONArray;
+            noOfFarms = jsonArray.Count;
+        }
         GameObject farm = (GameObject)Instantiate(prefabButton);
         farm.transform.SetParent(canvasRef.transform);
-        Button btn = farm.GetComponent<Button>();
-        btn.onClick.AddListener(delegate { GotoFarm(); });
+        
+        //Button btn = farm.GetComponent<Button>();
+        //btn.onClick.AddListener(delegate { GotoFarm(); });
+        
         if (noOfFarms == 0)
         {
             farm.transform.localPosition = new Vector2(419f, 89f);
@@ -156,13 +193,12 @@ public class farmlist : MonoBehaviour
             //farm.transform.localScale = Vector2;
             farm.GetComponentInChildren<Text>().text = "Farm " + (noOfFarms + 1);
         }
-        
 
+        noOfFarms++;
     }
 
     IEnumerator addFarm(string userId)
     {
-
         WWWForm form = new WWWForm();
         form.AddField("address", addressField.text);
         form.AddField("area", areaField.text);
@@ -179,9 +215,7 @@ public class farmlist : MonoBehaviour
             {
                 Debug.Log("Creation failed. error #" + www.downloadHandler.text);
             }
-
         }
-
 
         create();
         // Update Farmlist on mobile screen
@@ -191,16 +225,16 @@ public class farmlist : MonoBehaviour
         {
             yield return www.Send();
 
-            if (www.downloadHandler.text == "0")
-            {
-                Debug.Log("Creation failed. error #" + www.downloadHandler.text);
-            }
-            else
+            if ((www.downloadHandler.text).Contains("[") || www.downloadHandler.text == "0")
             {
                 Debug.Log(www.downloadHandler.text);
                 jsonArrayString = www.downloadHandler.text;
                 DBManager.farmIdList = jsonArrayString;
                 // callback(jsonArrayString);
+            }
+            else
+            {
+                Debug.Log("Update failed. error #" + www.downloadHandler.text);
             }
 
         }
@@ -219,21 +253,26 @@ public class farmlist : MonoBehaviour
         {
             yield return www.Send();
 
-            if (www.downloadHandler.text == "0")
-            {
-                // callback(jsonArrayString);
-                Debug.Log("Creation failed. error #" + www.downloadHandler.text);
-            }
-            else
+            if ((www.downloadHandler.text).Contains("["))
             {
                 Debug.Log(www.downloadHandler.text);
                 jsonArrayString = www.downloadHandler.text;
-
                 DBManager.farmIdList = jsonArrayString;
-                Debug.Log(DBManager.farmIdList);
+                
                 LoadFarms(jsonArrayString);
+                // callback(jsonArrayString);
+
+            }
+            else if(www.downloadHandler.text == "0")
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+            else
+            {
+                Debug.Log("Creation failed. error #" + www.downloadHandler.text);
             }
 
         }
     }
+
 }

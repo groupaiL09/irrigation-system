@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.EventSystems;
 using SimpleJSON;
 
 
@@ -13,8 +14,12 @@ public class farmClick : MonoBehaviour
     public GameObject canvasRef;
     //public string[] farmIdList = new string[10];
     public List<string> farmIdList = new List<string>();
+
+
     public void GotoFarm()
     {
+        GameObject farm = EventSystem.current.currentSelectedGameObject;
+
         string jsonArrayString = DBManager.farmIdList;
         
         JSONArray jsonArray = JSON.Parse(jsonArrayString) as JSONArray;
@@ -26,17 +31,20 @@ public class farmClick : MonoBehaviour
             farmIdList.Add(jsonArray[i].AsObject["farm_id"]);
         }
 
-        GameObject farm = (GameObject)Instantiate(prefabButton);
-        //farm.transform.SetParent(canvasRef.transform);
+        
 
         for (int i = 0; i < jsonArray.Count; i++)
         {
-            if(farm.GetComponentInChildren<Text>().text == String.Concat("Farm " + (i )))
+            if(farm.GetComponentInChildren<Text>().text == String.Concat("Farm " + (i+1)))
             {
                 DBManager.farmId = farmIdList[i];
                 Debug.Log(i);
             }
         }
+
+       
+
+        Debug.Log("farm_id: " + DBManager.farmId);
 
         Debug.Log("farm_id: " + DBManager.farmId);
         DBManager.cur = 3;
