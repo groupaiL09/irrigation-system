@@ -14,7 +14,8 @@ create table devices
 	(
 		device_id int(11) not null primary key auto_increment,
         type varchar(20) not null,
-        name varchar(50) not null
+        name varchar(50) not null,
+		topic varchar(100) 
     );
     
 create table farms
