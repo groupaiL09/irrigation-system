@@ -182,10 +182,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Home
 --- !u!222 &47395386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -802,7 +802,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 236715673}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoFarminfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &236715673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +935,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 332138769}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: backHomepage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &332138769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,9 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingScene: {fileID: 163932350}
-  editDeviceInfo: {fileID: 740824146}
   setting: {fileID: 163932348}
-  edit: {fileID: 740824144}
 --- !u!4 &442123828
 Transform:
   m_ObjectHideFlags: 0
@@ -1456,7 +1478,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 665867189}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &665867189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,7 +1929,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 856493539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoNotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &856493539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2299,10 +2345,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2310,7 +2356,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Back
 --- !u!222 &993224944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2480,7 +2526,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031790354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoStatistic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1031790354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3602,7 +3660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1639729227}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1639729227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3802,7 +3872,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1759029043}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1820400670}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoDevices
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1759029043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3853,6 +3935,7 @@ GameObject:
   - component: {fileID: 1820400669}
   - component: {fileID: 1820400668}
   - component: {fileID: 1820400667}
+  - component: {fileID: 1820400670}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3949,6 +4032,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1820400670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820400665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a7000a224484b6db2679ab90b400db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905734801
 GameObject:
   m_ObjectHideFlags: 0

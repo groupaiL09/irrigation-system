@@ -22,11 +22,6 @@ public class SettingManager : MonoBehaviour
         }
     }
 
-    public void changeSceneToWateringMode()
-    {
-        SceneManager.LoadScene("Watering_mode");
-    }
-
     void Start()
     {
         setting.SetActive(false);

@@ -206,9 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 299928796}
-        m_TargetAssemblyTypeName: WateringModeManager, Assembly-CSharp
-        m_MethodName: BackToHomePage
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: backHomepage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -833,10 +833,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Home
 --- !u!222 &460360276
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1142,7 +1142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 598721096}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoDevices
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &598721096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1356,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 662683420}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoFarminfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &662683420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,7 +1697,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 885655194}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoNotification
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &885655194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,7 +1830,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 956347371}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &956347371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1845,6 +1893,7 @@ GameObject:
   - component: {fileID: 968646487}
   - component: {fileID: 968646486}
   - component: {fileID: 968646485}
+  - component: {fileID: 968646488}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1941,6 +1990,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &968646488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968646483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7a7000a224484b6db2679ab90b400db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1163930862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,7 +2371,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1382635067}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: gotoStatistic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1382635067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2619,10 +2692,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 4
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2630,7 +2703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Back
 --- !u!222 &1430901297
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2807,7 +2880,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1851262907}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 968646488}
+        m_TargetAssemblyTypeName: homepage, Assembly-CSharp
+        m_MethodName: back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1851262907
 MonoBehaviour:
   m_ObjectHideFlags: 0

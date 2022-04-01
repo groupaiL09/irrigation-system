@@ -19,11 +19,6 @@ public class WateringModeManager : MonoBehaviour
         farmMQTT.GetComponent<HomePage.FarmMQTT>().PublishModeAuto(choice);
     }
 
-    public void BackToHomePage()
-    {
-        SceneManager.LoadScene("HomePage");
-    }
-
     private void Start()
     {
         GameObject farmMQTT = GameObject.FindGameObjectWithTag("Manager_mqtt");
