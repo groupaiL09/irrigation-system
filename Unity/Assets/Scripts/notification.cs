@@ -16,7 +16,7 @@ public class notification : MonoBehaviour
     public static string dateShow = DateTime.UtcNow.ToString("yyyy-MM-dd");  
 
     public static int notifNumber;
-    public static GameObject[] goNotif;
+    public static GameObject[] goNotif; 
 
     public Button submitButton;
 

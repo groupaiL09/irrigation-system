@@ -1133,7 +1133,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Pump(10s)
+  m_Text: Pump
 --- !u!222 &561296918
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1299,7 +1299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -699.39, y: -549}
+  m_AnchoredPosition: {x: 235, y: -549}
   m_SizeDelta: {x: 235, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &599236000
@@ -1393,10 +1393,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606680840}
+  - component: {fileID: 606680841}
   - component: {fileID: 606680839}
   m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
+  m_Name: Manager_homepage
+  m_TagString: Manager_homepage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1410,7 +1411,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 606680838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ae8804b63886242b46bedafaaba2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: cad7e15e487ccb6edb2dbda5b2eec940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settingScene: {fileID: 474123425}
@@ -1429,6 +1430,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &606680841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606680838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e29e64dd91e0cbacb923d600af667a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempValue: {fileID: 1562083489}
+  soilValue: {fileID: 712157375}
+  timeValue: {fileID: 919333714}
+  pumpOn: {fileID: 597325470}
+  turnOnPump: {fileID: 597325472}
+  pumpOff: {fileID: 599235998}
+  turnOffPump: {fileID: 599236000}
 --- !u!1 &709417900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1722,6 +1742,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722502366}
   m_CullTransparentMesh: 1
+--- !u!1 &850029965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 850029966}
+  - component: {fileID: 850029968}
+  - component: {fileID: 850029967}
+  m_Layer: 0
+  m_Name: Manager_mqtt
+  m_TagString: Manager_mqtt
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &850029966
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850029965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 1067.523, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &850029967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850029965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad724b8e83382c721a9e0084ee1543db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &850029968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850029965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2daadad848f310eab3b7209967e2dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokerAddress: localhost
+  brokerPort: 1883
+  isEncrypted: 0
+  connectionDelay: 500
+  timeoutOnConnection: 30000
+  autoConnect: 0
+  mqttUserName: 
+  mqttPassword: 
+  topics: []
+  farm_id: 1
 --- !u!1 &903361670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,7 +2090,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 989038339}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606680839}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
+        m_MethodName: changeSceneToWateringMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &989038339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2948,7 +3046,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 606680839}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
         m_MethodName: toggleState
         m_Mode: 1
         m_Arguments:

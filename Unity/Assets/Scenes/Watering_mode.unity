@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6568737}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299928796}
+        m_TargetAssemblyTypeName: WateringModeManager, Assembly-CSharp
+        m_MethodName: BackToHomePage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6568737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,9 +423,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299928797}
+  - component: {fileID: 299928798}
   - component: {fileID: 299928796}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Manager_watering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,13 +441,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 299928795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ae8804b63886242b46bedafaaba2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: c9d0f2aed45df4641ba8e49d715fcb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingScene: {fileID: 876479300}
-  editDeviceInfo: {fileID: 0}
-  setting: {fileID: 876479298}
-  edit: {fileID: 0}
+  toggleGroup: {fileID: 464842454}
+  isOnRadio: {fileID: 1622794254}
+  isOffRadio: {fileID: 2054587554}
 --- !u!4 &299928797
 Transform:
   m_ObjectHideFlags: 0
@@ -449,6 +461,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &299928798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299928795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad7e15e487ccb6edb2dbda5b2eec940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingScene: {fileID: 876479300}
+  setting: {fileID: 876479298}
 --- !u!1 &366972446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,7 +2098,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1262546285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299928796}
+        m_TargetAssemblyTypeName: WateringModeManager, Assembly-CSharp
+        m_MethodName: UpdateAutoMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1262546285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2472,7 +2510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 299928796}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
         m_MethodName: toggleState
         m_Mode: 1
