@@ -6,41 +6,47 @@ public class homepage : MonoBehaviour
 {
     public void gotoDevices() 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(5); 
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 5;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void gotoWater()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(6); 
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 6;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void gotoNotification() 
     {
-       UnityEngine.SceneManagement.SceneManager.LoadScene(7);   
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 7;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void gotoStatistic()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(8);  
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 8;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void gotoFarminfo() 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(9); 
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 9;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void backHomepage()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3); 
+        DBManager.pre = DBManager.cur;
+        DBManager.cur = 3;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
     public void back() 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(9); 
-    }
-    // Start is called before the first frame update
-    void Start()
-    { 
-
-    } 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (DBManager.cur == 3) 
+            DBManager.pre = 2;
+        int temp = DBManager.cur;
+        DBManager.cur = DBManager.pre;
+        DBManager.pre = temp;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
     }
 }

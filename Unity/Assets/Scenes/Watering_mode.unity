@@ -2583,8 +2583,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager, Assembly-CSharp
+      - m_Target: {fileID: 299928798}
+        m_TargetAssemblyTypeName: SettingManager, Assembly-CSharp
         m_MethodName: toggleState
         m_Mode: 1
         m_Arguments:

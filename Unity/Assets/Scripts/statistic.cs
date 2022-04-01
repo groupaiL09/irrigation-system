@@ -65,7 +65,7 @@ public class statistic : MonoBehaviour
     }
     IEnumerator getStat()
     {
-        farm_id = 1;
+        // farm_id = 1;
         WWWForm form = new WWWForm();
         form.AddField("farm_id", farm_id);
         form.AddField("dateShow", dateShow);
@@ -88,7 +88,7 @@ public class statistic : MonoBehaviour
 
     public void test() 
     {
-        Debug.Log(farm_id);
+        // Debug.Log(farm_id);
         StartCoroutine(run());
     }
 

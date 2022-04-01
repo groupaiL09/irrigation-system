@@ -35,8 +35,9 @@ public class farmlist : MonoBehaviour
             {
                 StartCoroutine(CreateFarmsRoutine(jsonArrayString));
             };*/
-
         }
+        // DBManager.cur = 2;
+        // Debug.Log("Scene " + DBManager.cur);
     }
 
     public void GotoFarm()
@@ -235,5 +236,4 @@ public class farmlist : MonoBehaviour
 
         }
     }
-
 }
