@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System;
 using SimpleJSON;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 public class farmlist : MonoBehaviour
 {
@@ -19,24 +22,145 @@ public class farmlist : MonoBehaviour
     public InputField areaField;
     
     public string jsonArrayString;
-    public static int noOfFarms = 0;
+    //public static int noOfFarms = 0;
 
-    //Action<string> _createFarmsCallback;
+    public List<string> farmIdList = new List<string>();
+
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    public void ToggleDeleteButton()
+    {
+        foreach (GameObject clone in DBManager.clones)
+        {
+            Debug.Log(DBManager.clones.Count);
+            GameObject child = clone.transform.GetChild(1).gameObject;
+            //Debug.Log(child);
+            Button delete = child.GetComponentInChildren<Button>();
+            //Debug.Log(delete);
+            delete.onClick.AddListener(CallDeleteFarm);
+            if (child.activeSelf)
+            {
+                child.SetActive(false);
+            }
+            else
+            {
+                child.SetActive(true);
+            }
+        }
+    }
+
+    public void CallDeleteFarm()
+    {
+        StartCoroutine(DeleteFarm());
+    }
+
+    IEnumerator DeleteFarm()
+    {
+        farmIdList = new List<string>(); //reset list of farmId because jsonArrayString has already been changed
+
+        GameObject child = EventSystem.current.currentSelectedGameObject;
+
+        GameObject current = child.transform.parent.gameObject;
+
+        GameObject farm = current.transform.parent.gameObject;
+
+        //string jsonArrayString = DBManager.farmIdList;
+        JSONArray jsonArray = JSON.Parse(jsonArrayString) as JSONArray;
+        string deleteId = "failed";  //FarmId of deleted farm
+
+        for (int i = 0; i < jsonArray.Count; i++)
+        {
+            farmIdList.Add(jsonArray[i].AsObject["farm_id"]);
+        }
+
+        Debug.Log(farm);
+
+        //Find farmId of deleted farm
+        for (int i = 0; i < jsonArray.Count; i++)
+        {
+            if (farm.GetComponentInChildren<Text>().text == String.Concat("Farm " + (i + 1)))
+            {
+                deleteId = farmIdList[i];
+            }
+        }
+
+        //Delete farm database 
+        WWWForm form = new WWWForm();
+        form.AddField("farmId", deleteId);
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/deleteFarms.php", form))
+        {
+            yield return www.Send();
+
+            if (www.downloadHandler.text == "0")
+            {
+                Debug.Log(www.downloadHandler.text);
+            }
+            else
+            {
+                Debug.Log("Delete failed. error #" + www.downloadHandler.text);
+            }
+
+        }
+
+        //DBManager.noOfFarms--;
+
+        Destroy(farm);
+
+        DBManager.clones.Remove(farm);
+        DBManager.noOfFarms = DBManager.clones.Count;
+
+        //Destroy(farm);
+
+        Debug.Log(deleteId);
+        Debug.Log(DBManager.clones.Count);
+        Debug.Log(DBManager.noOfFarms);
+
+        // Update Farmlist on mobile screen
+        WWWForm form1 = new WWWForm();
+        form1.AddField("userId", DBManager.userId);
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/getFarms.php", form1))
+        {
+            yield return www.Send();
+
+            if ((www.downloadHandler.text).Contains("["))
+            {
+                Debug.Log(www.downloadHandler.text);
+                jsonArrayString = www.downloadHandler.text;
+                DBManager.farmIdList = jsonArrayString;
+                // callback(jsonArrayString);
+            }
+            else
+            {
+                Debug.Log("Update failed. error #" + www.downloadHandler.text);
+            }
+
+        }
+
+        ToggleDeleteButton();
+        //LoadScene();
+    }
+
+
 
     private void Start()
     {
         if (DBManager.LoggedIn)
         {
+            DBManager.clones = new List<GameObject>();
+            DBManager.farmId = "";
             CallgetFarmIds();
-            DBManager.farmIdList = jsonArrayString;
-
-            //userDisplay.text = "Welcome " + DBManager.userId + "!";
-            /*_createFarmsCallback = (jsonArrayString) =>
-            {
-                StartCoroutine(CreateFarmsRoutine(jsonArrayString));
-            };*/
-
+            //DBManager.farmIdList = jsonArrayString;
         }
+    }
+
+    public void LogOut()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void GotoFarm()
@@ -84,7 +208,7 @@ public class farmlist : MonoBehaviour
             //btn.onClick.AddListener(delegate { GotoFarm(); });
             //virtualButton.onClick.AddListener(GotoFarm);
 
-            /*if (i == 0)
+            if (i == 0)
             {
                 farm.transform.localPosition = new Vector2(419f, 89f);
                 //farm.transform.localScale = Vector2;
@@ -114,87 +238,56 @@ public class farmlist : MonoBehaviour
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
                     
-            }*/
-
-            if (i == 0)
-            {
-                farm.transform.localPosition = new Vector2(542f, -820.46f);
-                //farm.transform.localScale = Vector2;
-                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-
             }
-            if (i == 1)
-            {
 
-                farm.transform.localPosition = new Vector2(542f, -1057f);
-                //farm.transform.localScale = Vector2;
-                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-
-            }
-            if (i == 2)
-            {
-
-                farm.transform.localPosition = new Vector2(542f, 633f);
-                //farm.transform.localScale = Vector2;
-                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-
-            }
-            if (i == 3)
-            {
-
-                farm.transform.localPosition = new Vector2(542f, 399f);
-                //farm.transform.localScale = Vector2;
-                farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-
-            }
 
             DBManager.clones.Add(farm);
-
-
         }
+        DBManager.noOfFarms = jsonArray.Count;
     }
 
 
 
     public void create()
     {
-        if (noOfFarms > 0)
+        /*if (DBManager.noOfFarms > 0)
         {
             JSONArray jsonArray = JSON.Parse(jsonArrayString) as JSONArray;
-            noOfFarms = jsonArray.Count;
-        }
+            DBManager.noOfFarms = jsonArray.Count;
+        }*/
         GameObject farm = (GameObject)Instantiate(prefabButton);
         farm.transform.SetParent(canvasRef.transform);
         
         //Button btn = farm.GetComponent<Button>();
         //btn.onClick.AddListener(delegate { GotoFarm(); });
         
-        if (noOfFarms == 0)
+        if (DBManager.noOfFarms == 0)
         {
             farm.transform.localPosition = new Vector2(419f, 89f);
             //farm.transform.localScale = Vector2;
-            farm.GetComponentInChildren<Text>().text = "Farm " + (noOfFarms + 1);
+            farm.GetComponentInChildren<Text>().text = "Farm " + (DBManager.noOfFarms + 1);
         }
-        if (noOfFarms == 1)
+        if (DBManager.noOfFarms == 1)
         {
             farm.transform.localPosition = new Vector2(419f, -319f);
             //farm.transform.localScale = Vector2;
-            farm.GetComponentInChildren<Text>().text = "Farm " + (noOfFarms + 1);
+            farm.GetComponentInChildren<Text>().text = "Farm " + (DBManager.noOfFarms + 1);
         }
-        if (noOfFarms == 2)
+        if (DBManager.noOfFarms == 2)
         {
             farm.transform.localPosition = new Vector2(419f, -549f);
             //farm.transform.localScale = Vector2;
-            farm.GetComponentInChildren<Text>().text = "Farm " + (noOfFarms + 1);
+            farm.GetComponentInChildren<Text>().text = "Farm " + (DBManager.noOfFarms + 1);
         }
-        if (noOfFarms == 3)
+        if (DBManager.noOfFarms == 3)
         {
             farm.transform.localPosition = new Vector2(419f, -780f);
             //farm.transform.localScale = Vector2;
-            farm.GetComponentInChildren<Text>().text = "Farm " + (noOfFarms + 1);
+            farm.GetComponentInChildren<Text>().text = "Farm " + (DBManager.noOfFarms + 1);
         }
 
-        noOfFarms++;
+        DBManager.clones.Add(farm);
+        DBManager.noOfFarms = DBManager.clones.Count;
     }
 
     IEnumerator addFarm(string userId)
@@ -225,7 +318,7 @@ public class farmlist : MonoBehaviour
         {
             yield return www.Send();
 
-            if ((www.downloadHandler.text).Contains("[") || www.downloadHandler.text == "0")
+            if ((www.downloadHandler.text).Contains("["))
             {
                 Debug.Log(www.downloadHandler.text);
                 jsonArrayString = www.downloadHandler.text;
@@ -239,9 +332,8 @@ public class farmlist : MonoBehaviour
 
         }
 
-        //resetField();
-
         closeForm();
+        //LoadScene();
     }
 
     //public IEnumerator getFarmIds(string userId, System.Action<string> callback)

@@ -12,6 +12,7 @@ public static class DBManager
     public static int pre;
     public static int cur;
 
+    public static int noOfFarms = 0;
     public static List<GameObject> clones = new List<GameObject>(); //List of clone farm(button) base on user_id
 
     public static bool LoggedIn { get { return username != null; } }

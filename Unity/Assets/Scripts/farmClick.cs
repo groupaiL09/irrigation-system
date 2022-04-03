@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Networking;
-using System;
-using UnityEngine.EventSystems;
-using SimpleJSON;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.UI;
+    using UnityEngine.Networking;
+    using System;
+    using UnityEngine.EventSystems;
+    using SimpleJSON;
 
 
-public class farmClick : MonoBehaviour
-{
-    public GameObject prefabButton;
-    public GameObject canvasRef;
-    //public string[] farmIdList = new string[10];
-    public List<string> farmIdList = new List<string>();
+    public class farmClick : MonoBehaviour
+    {
+        public GameObject prefabButton;
+        public GameObject canvasRef;
+        //public string[] farmIdList = new string[10];
+        public List<string> farmIdList = new List<string>();
 
 
     public void GotoFarm()
