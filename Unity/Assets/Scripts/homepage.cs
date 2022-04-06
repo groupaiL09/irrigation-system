@@ -48,5 +48,6 @@ public class homepage : MonoBehaviour
         DBManager.cur = DBManager.pre;
         DBManager.pre = temp;
         UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur); 
+
     }
 }

@@ -151,6 +151,8 @@ public class farmlist : MonoBehaviour
     {
         if (DBManager.LoggedIn)
         {
+            
+            DBManager.loadFarm = 0;
             DBManager.clones = new List<GameObject>();
             DBManager.farmId = "";
             CallgetFarmIds();

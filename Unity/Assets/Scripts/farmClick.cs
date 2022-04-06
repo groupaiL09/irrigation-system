@@ -45,8 +45,6 @@
        
 
         Debug.Log("farm_id: " + DBManager.farmId);
-
-        Debug.Log("farm_id: " + DBManager.farmId);
         DBManager.cur = 3;
         DBManager.pre = 2;
         UnityEngine.SceneManagement.SceneManager.LoadScene(DBManager.cur);

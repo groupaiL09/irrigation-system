@@ -12,7 +12,7 @@ namespace HomePage
     {
         public Text tempValue;
         public Text soilValue;
-
+        public Text nextDayValue;
         public Text timeValue;
 
         static int pumpStatus = 0;
@@ -24,14 +24,28 @@ namespace HomePage
 
         static int saferOnClick = 0;
 
-        public void UpdateTemp(string msg)
+        public void UpdateNextTime(string msg)
         {
-            tempValue.text = msg + "°C";
+            DateTime theTime = DateTime.Now;
+            Debug.Log("theTime:" + theTime);
+            theTime = theTime.AddMinutes(Int32.Parse(msg)); //fixed
+            Debug.Log("theTime:" + theTime);
+            nextDayValue.text = theTime.ToString();
         }
 
-        public void UpdateSoil(string msg)
+        public void UpdateDBManager(int index, string msg)
         {
-            soilValue.text = msg + "%";
+            DBManager.statistic[index] = msg;
+        }
+
+        public void UpdateTemp()
+        {
+            tempValue.text = DBManager.statistic[0] + "°C";
+        }
+
+        public void UpdateSoil()
+        {
+            soilValue.text = DBManager.statistic[1] + "%";
         }
 
         public void UpdatePumpStatus(string msg)
@@ -97,7 +111,12 @@ namespace HomePage
 
         void Start()
         {
-            addListenerInit();
+            if(DBManager.loadFarm == 0)
+            {
+                addListenerInit();
+                DBManager.loadFarm = 1;
+            }
+            
             UpdatePumpUI();
             Update();
         }

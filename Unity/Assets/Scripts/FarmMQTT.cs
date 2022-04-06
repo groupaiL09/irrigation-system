@@ -17,7 +17,7 @@ namespace HomePage
     {
         public List<string> topics = new List<string>();
         private List<string> eventMessages = new List<string>();
-        public string farm_id = "1";
+        public string farm_id = DBManager.farmId;
         public static string preLoading = "Homepage";
         public static int modAuto = 0;
 
@@ -124,12 +124,16 @@ namespace HomePage
             {
                 GameObject homeManager = GameObject.FindGameObjectWithTag("Manager_homepage");
                 if (topic == topics[0])
-                    homeManager.GetComponent<HomePageManager>().UpdateTemp(msg);
+                    homeManager.GetComponent<HomePageManager>().UpdateDBManager(0, msg);
                 if (topic == topics[1])
-                    homeManager.GetComponent<HomePageManager>().UpdateSoil(msg);
+                    homeManager.GetComponent<HomePageManager>().UpdateDBManager(1, msg);
                 if (topic == topics[2])
                 {
                     homeManager.GetComponent<HomePageManager>().UpdatePumpStatus(msg);
+                }
+                if (topic == topics[4])
+                {
+                    homeManager.GetComponent<HomePageManager>().UpdateNextTime(msg);
                 }
             }
             if (topic == topics[3])
@@ -155,7 +159,7 @@ namespace HomePage
 
             base.brokerAddress = "io.adafruit.com";
             base.mqttUserName = "groupaiL09";
-            base.mqttPassword = "aio_Wunc20BoOAU8CMzNRTJsISFzKOGw";
+            base.mqttPassword = "";
             base.Connect();
         }
         
