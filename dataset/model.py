@@ -22,6 +22,7 @@ def min_max_ele():
     arr1 = [x[0] for x in train]
     arr2 = [(1 - x[1] / 1024) * 100 for x in train]
     return min(arr1),max(arr1),min(arr2),max(arr2)
+    
 print(train)
 train = minmax_scale([[x[0], (1 - x[1]/1024) * 100] for x in train],(-1,1))
 output = [x[4] for x in data]
