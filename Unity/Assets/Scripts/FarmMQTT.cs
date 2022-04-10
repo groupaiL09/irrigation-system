@@ -19,21 +19,10 @@ namespace HomePage
         private List<string> eventMessages = new List<string>();
         public string farm_id = DBManager.farmId;
         public static string preLoading = "Homepage";
-        public static int modAuto = 0;
 
         public void SetEncrypted(bool isEncrypted)
         {
             this.isEncrypted = isEncrypted;
-        }
-
-        public int getValueOfAutoMod()
-        {
-            return modAuto;
-        }
-
-        public void UpdateModeAuto(string msg)
-        {
-            modAuto = Int32.Parse(msg);
         }
 
         public void InitSceneData()
@@ -128,9 +117,8 @@ namespace HomePage
                 if (topic == topics[1])
                     homeManager.GetComponent<HomePageManager>().UpdateDBManager(1, msg);
                 if (topic == topics[2])
-                {
-                    homeManager.GetComponent<HomePageManager>().UpdatePumpStatus(msg);
-                }
+                    homeManager.GetComponent<HomePageManager>().UpdateDBManager(2, msg);
+                
                 if (topic == topics[4])
                 {
                     homeManager.GetComponent<HomePageManager>().UpdateNextTime(msg);
@@ -138,7 +126,7 @@ namespace HomePage
             }
             if (topic == topics[3])
             {
-                UpdateModeAuto(msg);
+                DBManager.localData[3] = msg;
             }
         }
 
@@ -154,16 +142,14 @@ namespace HomePage
             topics.Add("groupaiL09/f/farm" + farm_id + ".moisture");
             topics.Add("groupaiL09/f/farm" + farm_id + ".pump-status");
             topics.Add("groupaiL09/f/farm" + farm_id + ".mode-auto");
-
             topics.Add("groupaiL09/f/farm" + farm_id + ".mobile");
-
             base.brokerAddress = "io.adafruit.com";
             base.mqttUserName = "groupaiL09";
-            base.mqttPassword = "";
+            base.mqttPassword = "aio_WNlV17FgEtIujvEXgEC01WOGZnTb";
             base.Connect();
         }
         
-        
+        /*
         public void Update()
         {
             base.ProcessMqttEvents();
@@ -177,7 +163,8 @@ namespace HomePage
             }
             
         }
-        
+        */
+     
     }
 }
 

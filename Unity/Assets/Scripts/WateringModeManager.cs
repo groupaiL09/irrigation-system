@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,8 @@ public class WateringModeManager : MonoBehaviour
     private void Start()
     {
         GameObject farmMQTT = GameObject.FindGameObjectWithTag("Manager_mqtt");
-        int tmp = farmMQTT.GetComponent<HomePage.FarmMQTT>().getValueOfAutoMod();
-        if (tmp == 1)
+        string tmp = DBManager.localData[3];
+        if (tmp == "1")
         {
             isOnRadio.isOn = true;
             isOffRadio.isOn = false;

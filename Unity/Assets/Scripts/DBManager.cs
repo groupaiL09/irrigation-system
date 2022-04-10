@@ -16,7 +16,12 @@ public static class DBManager
     public static int noOfFarms = 0;
     public static List<GameObject> clones = new List<GameObject>(); //List of clone farm(button) base on user_id
 
-    public static List<string> statistic = new List<string>(); //index: 0 - temp, 1 - moisture, 2 - pump status, 3 - mode auto
+    public static List<string> localData = new List<string>() {"80",    // 0 - temp
+                                                               "90",    // 1 - moisture
+                                                               "0",     // 2 - pump status
+                                                               "0",     // 3 - mode auto
+                                                               "0"      // 4 - next pump
+                                                                };
 
     public static bool LoggedIn { get { return username != null; } }
 }

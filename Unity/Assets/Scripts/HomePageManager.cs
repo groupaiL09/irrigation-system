@@ -15,8 +15,6 @@ namespace HomePage
         public Text nextDayValue;
         public Text timeValue;
 
-        static int pumpStatus = 0;
-
         public GameObject pumpOn;
         public Button turnOnPump;
         public GameObject pumpOff;
@@ -26,37 +24,38 @@ namespace HomePage
 
         public void UpdateNextTime(string msg)
         {
+            int min = Int32.Parse(msg);
+            if (min < 10)
+            {
+                nextDayValue.text = "UNDEFINED";
+                return;
+            }
             DateTime theTime = DateTime.Now;
-            Debug.Log("theTime:" + theTime);
-            theTime = theTime.AddMinutes(Int32.Parse(msg)); //fixed
-            Debug.Log("theTime:" + theTime);
+            theTime = theTime.AddMinutes(min);
             nextDayValue.text = theTime.ToString();
         }
 
         public void UpdateDBManager(int index, string msg)
         {
-            DBManager.statistic[index] = msg;
+            DBManager.localData[index] = msg;
+            if (index == 0) UpdateTemp();
+            if (index == 1) UpdateSoil();
+            if (index == 2) UpdatePumpUI();
         }
 
         public void UpdateTemp()
         {
-            tempValue.text = DBManager.statistic[0] + "°C";
+            tempValue.text = DBManager.localData[0] + "°C";
         }
 
         public void UpdateSoil()
         {
-            soilValue.text = DBManager.statistic[1] + "%";
-        }
-
-        public void UpdatePumpStatus(string msg)
-        {
-            pumpStatus = Int32.Parse(msg);
-            UpdatePumpUI();
+            soilValue.text = DBManager.localData[1] + "%";
         }
 
         public void UpdatePumpUI()
         {
-            if (pumpStatus == 0)
+            if (DBManager.localData[2] == "0")
             {
                 pumpOff.SetActive(true);
                 pumpOn.SetActive(false);
@@ -68,11 +67,15 @@ namespace HomePage
             }
         }
        
-        void Update()
+        void Update()                                                           // UPDATE FRAME BY FRAME time + automod + data
         {
-            int modAuto = HomePage.FarmMQTT.modAuto;
+            UpdateTemp();
+            UpdateSoil();
+            UpdatePumpUI();
+            UpdateNextTime("0");
             timeValue.text = System.DateTime.Now.ToString("dd/MM/yyyy");
-            if (modAuto == 1)
+            string modAuto = DBManager.localData[3];
+            if (modAuto == "1")
             {
                 removeListener();
             }
@@ -80,7 +83,6 @@ namespace HomePage
             {
                 addListenerInit();
             }
-           
         }
 
         void InitButtonOn()
@@ -111,12 +113,7 @@ namespace HomePage
 
         void Start()
         {
-            if(DBManager.loadFarm == 0)
-            {
-                addListenerInit();
-                DBManager.loadFarm = 1;
-            }
-            
+            addListenerInit();
             UpdatePumpUI();
             Update();
         }
