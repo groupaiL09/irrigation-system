@@ -22,9 +22,9 @@ namespace HomePage
 
         static int saferOnClick = 0;
 
-        public void UpdateNextTime(string msg)
+        public void UpdateNextTime()
         {
-            int min = Int32.Parse(msg);
+            int min = Int32.Parse(DBManager.localData[4]);
             if (min < 10)
             {
                 nextDayValue.text = "UNDEFINED";
@@ -33,14 +33,6 @@ namespace HomePage
             DateTime theTime = DateTime.Now;
             theTime = theTime.AddMinutes(min);
             nextDayValue.text = theTime.ToString();
-        }
-
-        public void UpdateDBManager(int index, string msg)
-        {
-            DBManager.localData[index] = msg;
-            if (index == 0) UpdateTemp();
-            if (index == 1) UpdateSoil();
-            if (index == 2) UpdatePumpUI();
         }
 
         public void UpdateTemp()
@@ -72,7 +64,7 @@ namespace HomePage
             UpdateTemp();
             UpdateSoil();
             UpdatePumpUI();
-            UpdateNextTime("0");
+            UpdateNextTime();
             timeValue.text = System.DateTime.Now.ToString("dd/MM/yyyy");
             string modAuto = DBManager.localData[3];
             if (modAuto == "1")
@@ -114,7 +106,6 @@ namespace HomePage
         void Start()
         {
             addListenerInit();
-            UpdatePumpUI();
             Update();
         }
     }
