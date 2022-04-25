@@ -73,7 +73,7 @@ public class notification : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("username", username);
         form.AddField("dateShow", dateShow);
-        WWW www = new WWW("http://localhost/sqlconnect/notification.php", form);
+        WWW www = new WWW("http://" + DBManager.ip + "/sqlconnect/notification.php", form);
         yield return www;
 
         string result = www.text;

@@ -24,7 +24,7 @@ public class register : MonoBehaviour
         form.AddField("email", emailField.text);
         form.AddField("password1", password1Field.text);
         form.AddField("password2", password2Field.text);
-        WWW www = new WWW("http://localhost/sqlconnect/register.php", form);
+        WWW www = new WWW("http://" + DBManager.ip + "/sqlconnect/register.php", form);
         yield return www;
         if(www.text == "0")
         {

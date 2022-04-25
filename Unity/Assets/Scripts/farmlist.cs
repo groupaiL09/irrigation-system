@@ -17,6 +17,7 @@ public class farmlist : MonoBehaviour
     public GameObject addForm;
     public GameObject canvasRef;
     public GameObject prefabButton;
+    public Button saveButton;
     //public Button virtualButton;
     public InputField addressField;
     public InputField areaField;
@@ -92,7 +93,7 @@ public class farmlist : MonoBehaviour
         //Delete farm database 
         WWWForm form = new WWWForm();
         form.AddField("farmId", deleteId);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/deleteFarms.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://" + DBManager.ip + "/sqlconnect/deleteFarms.php", form))
         {
             yield return www.Send();
 
@@ -123,7 +124,7 @@ public class farmlist : MonoBehaviour
         // Update Farmlist on mobile screen
         WWWForm form1 = new WWWForm();
         form1.AddField("userId", DBManager.userId);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/getFarms.php", form1))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://" + DBManager.ip + "/sqlconnect/getFarms.php", form1))
         {
             yield return www.Send();
 
@@ -132,7 +133,7 @@ public class farmlist : MonoBehaviour
                 Debug.Log(www.downloadHandler.text);
                 jsonArrayString = www.downloadHandler.text;
                 DBManager.farmIdList = jsonArrayString;
-                // callback(jsonArrayString);
+                //LoadFarms(jsonArrayString);
             }
             else
             {
@@ -142,10 +143,13 @@ public class farmlist : MonoBehaviour
         }
 
         ToggleDeleteButton();
-        //LoadScene();
+        LoadScene();
     }
 
-
+    public void VerifyInputs()
+    {
+        saveButton.interactable = (addressField.text.Length >= 4 && areaField.text.Length >= 3);
+    }
 
     private void Start()
     {
@@ -298,7 +302,7 @@ public class farmlist : MonoBehaviour
         form.AddField("address", addressField.text);
         form.AddField("area", areaField.text);
         form.AddField("userId", userId);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/insertFarms.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://" + DBManager.ip + "/sqlconnect/insertFarms.php", form))
         {
             yield return www.Send();
 
@@ -316,7 +320,7 @@ public class farmlist : MonoBehaviour
         // Update Farmlist on mobile screen
         WWWForm form1 = new WWWForm();
         form1.AddField("userId", userId);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/getFarms.php", form1))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://" + DBManager.ip + "/sqlconnect/getFarms.php", form1))
         {
             yield return www.Send();
 
@@ -343,7 +347,7 @@ public class farmlist : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("userId", userId);
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/sqlconnect/getFarms.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://" + DBManager.ip + "/sqlconnect/getFarms.php", form))
         {
             yield return www.Send();
 

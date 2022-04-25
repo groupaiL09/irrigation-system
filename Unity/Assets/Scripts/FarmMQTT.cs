@@ -19,21 +19,10 @@ namespace HomePage
         private List<string> eventMessages = new List<string>();
         public string farm_id = DBManager.farmId;
         public static string preLoading = "Homepage";
-        public static int modAuto = 0;
 
         public void SetEncrypted(bool isEncrypted)
         {
             this.isEncrypted = isEncrypted;
-        }
-
-        public int getValueOfAutoMod()
-        {
-            return modAuto;
-        }
-
-        public void UpdateModeAuto(string msg)
-        {
-            modAuto = Int32.Parse(msg);
         }
 
         public void InitSceneData()
@@ -112,7 +101,7 @@ namespace HomePage
         {
             Debug.Log("CONNECTION LOST!");
         }
-        
+
         protected override void DecodeMessage(string topic, byte[] message)
         {
             string msg = System.Text.Encoding.UTF8.GetString(message);
@@ -120,26 +109,15 @@ namespace HomePage
             //StoreMessage(msg);
             Scene currentScene = SceneManager.GetActiveScene();
             string sceneName = currentScene.name;
-            if (sceneName == "Homepage")
-            {
-                GameObject homeManager = GameObject.FindGameObjectWithTag("Manager_homepage");
-                if (topic == topics[0])
-                    homeManager.GetComponent<HomePageManager>().UpdateDBManager(0, msg);
-                if (topic == topics[1])
-                    homeManager.GetComponent<HomePageManager>().UpdateDBManager(1, msg);
-                if (topic == topics[2])
-                {
-                    homeManager.GetComponent<HomePageManager>().UpdatePumpStatus(msg);
-                }
-                if (topic == topics[4])
-                {
-                    homeManager.GetComponent<HomePageManager>().UpdateNextTime(msg);
-                }
-            }
-            if (topic == topics[3])
-            {
-                UpdateModeAuto(msg);
-            }
+
+            GameObject homeManager = GameObject.FindGameObjectWithTag("Manager_homepage");
+            int index = 0;
+            if (topic == topics[0]) index = 0;
+            if (topic == topics[1]) index = 1;
+            if (topic == topics[2]) index = 2;
+            if (topic == topics[3]) index = 3;
+            if (topic == topics[4]) index = 4;
+            DBManager.localData[index] = msg;
         }
 
 
@@ -150,20 +128,18 @@ namespace HomePage
 
         public void Start()
         {
-            topics.Add("groupaiL09/f/farm"+ farm_id +".temperature");
+            topics.Add("groupaiL09/f/farm" + farm_id + ".temperature");
             topics.Add("groupaiL09/f/farm" + farm_id + ".moisture");
             topics.Add("groupaiL09/f/farm" + farm_id + ".pump-status");
             topics.Add("groupaiL09/f/farm" + farm_id + ".mode-auto");
-
             topics.Add("groupaiL09/f/farm" + farm_id + ".mobile");
-
             base.brokerAddress = "io.adafruit.com";
             base.mqttUserName = "groupaiL09";
             base.mqttPassword = "";
             base.Connect();
         }
-        
-        
+
+        /*
         public void Update()
         {
             base.ProcessMqttEvents();
@@ -177,7 +153,7 @@ namespace HomePage
             }
             
         }
-        
+        */
+
     }
 }
-

@@ -27,11 +27,9 @@
         for (int i = 0; i < jsonArray.Count; i++)
         {
             //Debug.Log(jsonArray[i].AsObject["farm_id"]);
-            
             farmIdList.Add(jsonArray[i].AsObject["farm_id"]);
         }
-
-        
+     
 
         for (int i = 0; i < jsonArray.Count; i++)
         {

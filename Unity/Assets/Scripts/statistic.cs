@@ -11,7 +11,7 @@ public class statistic : MonoBehaviour
     public InputField dateField;    
     public GameObject canvasRef;
     public GameObject prefabStat;
-    public static int farm_id = Int32.Parse(DBManager.farmId); 
+    //public static int farm_id = Int32.Parse(DBManager.farmId); 
     public static JSONArray jsonArray; 
     public static string dateShow = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
@@ -69,9 +69,9 @@ public class statistic : MonoBehaviour
     {
         // farm_id = 1;
         WWWForm form = new WWWForm();
-        form.AddField("farm_id", farm_id);
+        form.AddField("farm_id", DBManager.farmId);
         form.AddField("dateShow", dateShow);
-        WWW www = new WWW("http://localhost/sqlconnect/statistic.php", form);
+        WWW www = new WWW("http://" + DBManager.ip + "/sqlconnect/statistic.php", form);
         yield return www;
 
         string result = www.text;

@@ -10,7 +10,7 @@ public class farmInfo : MonoBehaviour
 {
     public InputField addressField;  
     public InputField areaField;    
-    public static int farm_id = Int32.Parse(DBManager.farmId); 
+    //public static string farm_id = DBManager.farmId; 
     public static JSONArray jsonArray; 
 
     public Button submitButton;
@@ -27,11 +27,11 @@ public class farmInfo : MonoBehaviour
     
     IEnumerator getInfo()
     {
-        farm_id = 1;
+        //farm_id = "1";
         WWWForm form = new WWWForm();
-        form.AddField("farm_id", farm_id);
+        form.AddField("farm_id", DBManager.farmId);
         
-        WWW www = new WWW("http://localhost/sqlconnect/getFarmInfo.php", form);
+        WWW www = new WWW("http://" + DBManager.ip + "/sqlconnect/getFarmInfo.php", form);
         yield return www;
 
         string result = www.text;
@@ -45,13 +45,13 @@ public class farmInfo : MonoBehaviour
 
     IEnumerator Save()
     {
-        farm_id = 1;
+        //farm_id = "1";
         WWWForm form = new WWWForm();
-        form.AddField("farm_id", farm_id);
+        form.AddField("farm_id", DBManager.farmId);
         form.AddField("location", addressField.text);
         form.AddField("description", areaField.text);
 
-        WWW www = new WWW("http://localhost/sqlconnect/saveFarmInfo.php", form);
+        WWW www = new WWW("http://" + DBManager.ip + "/sqlconnect/saveFarmInfo.php", form);
         yield return www;
         
         Debug.Log("Successfully updated!");

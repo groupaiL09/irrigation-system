@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect('localhost', 'root', '', 'unity_app');
+    include_once("connection.php");
     // check connection to DB
     if (mysqli_connect_errno()){
         echo "1";   //error code #1 = connection failed
