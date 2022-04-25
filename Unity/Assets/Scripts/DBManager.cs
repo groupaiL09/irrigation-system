@@ -7,7 +7,7 @@ public static class DBManager
     public static string username;
     public static string password;
     public static string userId;
-    public static string farmId;
+    public static string farmId = "0";
     public static string farmIdList;
     public static int pre;
     public static int cur;
