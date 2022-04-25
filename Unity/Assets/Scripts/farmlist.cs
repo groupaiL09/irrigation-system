@@ -21,7 +21,7 @@ public class farmlist : MonoBehaviour
     //public Button virtualButton;
     public InputField addressField;
     public InputField areaField;
-    
+
     public string jsonArrayString;
     //public static int noOfFarms = 0;
 
@@ -155,7 +155,7 @@ public class farmlist : MonoBehaviour
     {
         if (DBManager.LoggedIn)
         {
-            
+
             DBManager.loadFarm = 0;
             DBManager.clones = new List<GameObject>();
             DBManager.farmId = "";
@@ -187,7 +187,7 @@ public class farmlist : MonoBehaviour
 
     public void showForm()
     {
-        
+
         addForm.SetActive(true);
         addFormInfo.alpha = 1;
     }
@@ -197,7 +197,7 @@ public class farmlist : MonoBehaviour
         addFormInfo.alpha = 0;
         addForm.SetActive(false);
     }
-    
+
 
     public void LoadFarms(string jsonArrayString)
     {
@@ -207,7 +207,7 @@ public class farmlist : MonoBehaviour
         for (int i = 0; i < jsonArray.Count; i++)
         {
             string farmId = jsonArray[i].AsObject["farm_id"];
-            
+
             GameObject farm = (GameObject)Instantiate(prefabButton);
             farm.transform.SetParent(canvasRef.transform);
             //Button btn = virtualButton;
@@ -223,27 +223,27 @@ public class farmlist : MonoBehaviour
             }
             if (i == 1)
             {
-                
+
                 farm.transform.localPosition = new Vector2(419f, -319f);
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-                
+
             }
             if (i == 2)
             {
-      
+
                 farm.transform.localPosition = new Vector2(419f, -549f);
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-                
+
             }
             if (i == 3)
             {
-                
+
                 farm.transform.localPosition = new Vector2(419f, -780f);
                 //farm.transform.localScale = Vector2;
                 farm.GetComponentInChildren<Text>().text = "Farm " + (i + 1);
-                    
+
             }
 
 
@@ -263,10 +263,10 @@ public class farmlist : MonoBehaviour
         }*/
         GameObject farm = (GameObject)Instantiate(prefabButton);
         farm.transform.SetParent(canvasRef.transform);
-        
+
         //Button btn = farm.GetComponent<Button>();
         //btn.onClick.AddListener(delegate { GotoFarm(); });
-        
+
         if (DBManager.noOfFarms == 0)
         {
             farm.transform.localPosition = new Vector2(419f, 89f);
@@ -356,12 +356,12 @@ public class farmlist : MonoBehaviour
                 Debug.Log(www.downloadHandler.text);
                 jsonArrayString = www.downloadHandler.text;
                 DBManager.farmIdList = jsonArrayString;
-                
+
                 LoadFarms(jsonArrayString);
                 // callback(jsonArrayString);
 
             }
-            else if(www.downloadHandler.text == "0")
+            else if (www.downloadHandler.text == "0")
             {
                 Debug.Log(www.downloadHandler.text);
             }
